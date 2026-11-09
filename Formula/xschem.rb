@@ -51,22 +51,25 @@ class Xschem < Formula
         system "make"
         system "make", "install"
       end
-    end
 
-    resource("tk").stage do
-      cd "unix" do
-        system "./configure", *tcltk_args,
-                              "--with-tcl=#{tcltk}/lib",
-                              "--disable-aqua",
-                              "--with-x",
-                              "--enable-xft",
-                              "--x-includes=#{formula_opt_include("libx11")}",
-                              "--x-libraries=#{formula_opt_lib("libx11")}"
-        # Tk appends the X11 library directory to its own install name,
-        # which produces a broken path like `.../lib:/opt/X11/lib/libtk8.6.dylib`.
-        inreplace "Makefile", /^LIB_RUNTIME_DIR\s*=.*$/, "LIB_RUNTIME_DIR = $(libdir)"
-        system "make"
-        system "make", "install"
+      # Tk's configure takes Tcl's header paths from the Tcl source tree, so
+      # build Tk while that tree is still staged. Otherwise it falls back to
+      # the SDK's Tcl 8.5 headers and fails.
+      resource("tk").stage do
+        cd "unix" do
+          system "./configure", *tcltk_args,
+                                "--with-tcl=#{tcltk}/lib",
+                                "--disable-aqua",
+                                "--with-x",
+                                "--enable-xft",
+                                "--x-includes=#{formula_opt_include("libx11")}",
+                                "--x-libraries=#{formula_opt_lib("libx11")}"
+          # Tk appends the X11 library directory to its own install name,
+          # which produces a broken path like `.../lib:/opt/X11/lib/libtk8.6.dylib`.
+          inreplace "Makefile", /^LIB_RUNTIME_DIR\s*=.*$/, "LIB_RUNTIME_DIR = $(libdir)"
+          system "make"
+          system "make", "install"
+        end
       end
     end
 

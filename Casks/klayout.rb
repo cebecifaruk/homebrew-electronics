@@ -7,35 +7,30 @@ cask "klayout" do
   on_sonoma :or_older do
     sha256 "b360f97f1d1e23ebcef7991a862522c5dc8ecafeb2ce528522452cc778ca52df"
 
-    url "https://www.klayout.org/downloads/MacOS/ST-klayout-#{version}-macOS-Sonoma-C32-1-qt5MP-RsysPsys.dmg",
-        verified: "klayout.org/downloads/"
+    url "https://www.klayout.org/downloads/MacOS/ST-klayout-#{version}-macOS-Sonoma-C32-1-qt5MP-RsysPsys.dmg"
   end
   on_sequoia do
     sha256 "8b479b6109ed8a888fcc2e46d9ae1ef2d74a45cf62b9e2a407bcb5f19b294ebc"
 
-    url "https://www.klayout.org/downloads/MacOS/ST-klayout-#{version}-macOS-Sequoia-C32-1-qt5MP-RsysPsys.dmg",
-        verified: "klayout.org/downloads/"
+    url "https://www.klayout.org/downloads/MacOS/ST-klayout-#{version}-macOS-Sequoia-C32-1-qt5MP-RsysPsys.dmg"
   end
   on_tahoe do
     on_arm do
       sha256 "4e8ec08ce8b314c873bfd3961ff7d476608357770b752406d4e36a939d75cea3"
 
-      url "https://www.klayout.org/downloads/MacOS/ARM64/arm64ST-klayout-#{version}-macOS-Tahoe-C32-1-qt5MP-RsysPsys.dmg",
-          verified: "klayout.org/downloads/"
+      url "https://www.klayout.org/downloads/MacOS/ARM64/arm64ST-klayout-#{version}-macOS-Tahoe-C32-1-qt5MP-RsysPsys.dmg"
     end
     on_intel do
       # There is no Intel build for Tahoe; the Sequoia build runs on it.
       sha256 "8b479b6109ed8a888fcc2e46d9ae1ef2d74a45cf62b9e2a407bcb5f19b294ebc"
 
-      url "https://www.klayout.org/downloads/MacOS/ST-klayout-#{version}-macOS-Sequoia-C32-1-qt5MP-RsysPsys.dmg",
-          verified: "klayout.org/downloads/"
+      url "https://www.klayout.org/downloads/MacOS/ST-klayout-#{version}-macOS-Sequoia-C32-1-qt5MP-RsysPsys.dmg"
     end
   end
   on_golden_gate :or_newer do
     sha256 "18853b8445675c90e58f99b3391d8c4504a5ddb7cb45cdef04dd81c58ad8bef1"
 
-    url "https://www.klayout.org/downloads/MacOS/ARM64/arm64ST-klayout-#{version}-macOS-GoldenGate-C32-1-qt5MP-RsysPsys.dmg",
-        verified: "klayout.org/downloads/"
+    url "https://www.klayout.org/downloads/MacOS/ARM64/arm64ST-klayout-#{version}-macOS-GoldenGate-C32-1-qt5MP-RsysPsys.dmg"
   end
 
   name "KLayout"
